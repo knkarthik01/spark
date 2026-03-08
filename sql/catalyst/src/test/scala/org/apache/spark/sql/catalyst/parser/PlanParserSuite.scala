@@ -827,8 +827,9 @@ class PlanParserSuite extends AnalysisTest {
     val fragment1 = "tablesample(bucket 4 out of 10 on x)"
     checkError(
       exception = parseException(sql1),
-      condition = "_LEGACY_ERROR_TEMP_0015",
-      parameters = Map("msg" -> "BUCKET x OUT OF y ON colname"),
+      condition = "TABLESAMPLE_UNSUPPORTED_SAMPLING_METHOD",
+      sqlState = "0A000",
+      parameters = Map("samplingMethod" -> "BUCKET x OUT OF y ON colname"),
       context = ExpectedContext(
         fragment = fragment1,
         start = 16,
@@ -849,8 +850,9 @@ class PlanParserSuite extends AnalysisTest {
     val fragment3 = "TABLESAMPLE(300M)"
     checkError(
       exception = parseException(sql3),
-      condition = "_LEGACY_ERROR_TEMP_0015",
-      parameters = Map("msg" -> "byteLengthLiteral"),
+      condition = "TABLESAMPLE_UNSUPPORTED_SAMPLING_METHOD",
+      sqlState = "0A000",
+      parameters = Map("samplingMethod" -> "byteLengthLiteral"),
       context = ExpectedContext(
         fragment = fragment3,
         start = 25,
@@ -860,8 +862,9 @@ class PlanParserSuite extends AnalysisTest {
     val fragment4 = "TABLESAMPLE(BUCKET 3 OUT OF 32 ON rand())"
     checkError(
       exception = parseException(sql4),
-      condition = "_LEGACY_ERROR_TEMP_0015",
-      parameters = Map("msg" -> "BUCKET x OUT OF y ON function"),
+      condition = "TABLESAMPLE_UNSUPPORTED_SAMPLING_METHOD",
+      sqlState = "0A000",
+      parameters = Map("samplingMethod" -> "BUCKET x OUT OF y ON function"),
       context = ExpectedContext(
         fragment = fragment4,
         start = 25,

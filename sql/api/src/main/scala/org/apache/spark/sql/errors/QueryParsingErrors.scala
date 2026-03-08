@@ -212,10 +212,10 @@ private[sql] object QueryParsingErrors extends DataTypeErrorsBase {
     new ParseException(errorClass = "_LEGACY_ERROR_TEMP_0014", ctx)
   }
 
-  def tableSampleByBytesUnsupportedError(msg: String, ctx: SampleMethodContext): Throwable = {
+  def tableSampleByBytesUnsupportedError(samplingMethod: String, ctx: SampleMethodContext): Throwable = {
     new ParseException(
-      errorClass = "_LEGACY_ERROR_TEMP_0015",
-      messageParameters = Map("msg" -> msg),
+      errorClass = "TABLESAMPLE_UNSUPPORTED_SAMPLING_METHOD",
+      messageParameters = Map("samplingMethod" -> samplingMethod),
       ctx)
   }
 

@@ -6353,6 +6353,12 @@
     },
     "sqlState" : "42601"
   },
+  "TABLESAMPLE_UNSUPPORTED_SAMPLING_METHOD" : {
+    "message" : [
+      "TABLESAMPLE(<samplingMethod>) is not supported."
+    ],
+    "sqlState" : "0A000"
+  },
   "TABLE_OR_VIEW_ALREADY_EXISTS" : {
     "message" : [
       "Cannot create table or view <relationName> because it already exists.",
@@ -7939,11 +7945,6 @@
   "_LEGACY_ERROR_TEMP_0014" : {
     "message" : [
       "TABLESAMPLE does not accept empty inputs."
-    ]
-  },
-  "_LEGACY_ERROR_TEMP_0015" : {
-    "message" : [
-      "TABLESAMPLE(<msg>) is not supported."
     ]
   },
   "_LEGACY_ERROR_TEMP_0016" : {
